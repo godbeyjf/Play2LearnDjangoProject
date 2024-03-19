@@ -129,6 +129,16 @@ export default {
     async recordScore() {
       // TODO: when Anagram Hunt finishes, make an Ajax call with axios (this.axios)
       // to record the score on the backend
+      try {
+        const response = await this.axios.post('/save_score/', {
+          game: 'Anagram Hunt',
+          score: this.score,
+          user: this.userName
+        });
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      } 
     }
   },
   watch: {

@@ -117,6 +117,7 @@ export default {
   name: 'MathGame',
   data() {
     return {
+      userName: '',
       score: 0,
       screen: "start",
       maxNumber: 30,
@@ -161,7 +162,17 @@ export default {
     async recordScore() {
       // TODO: when Math Facts finishes, make an Ajax call with axios (this.axios)
       // to record the score on the backend
-    }
+      try {
+        const response = await this.axios.post('/save_score/', {
+          game: 'Math Facts',
+          score: this.score,
+          user: this.userName
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+      }
   },
   computed: {
     correctAnswer() {
