@@ -1,0 +1,17 @@
+{% extends '_base_vue.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome to Play2Learn!</h1>
+        <hr class="my-4">
+        <a class="btn btn-primary btn-lg" href="{% url 'users:signup' %}" role="button">Sign Up</a>
+        <a class="btn btn-primary btn-lg" href="{% url 'users:login' %}" role="button">Log In</a>
+        <a class="btn btn-primary btn-lg" href="{% url 'users:my_account' %}" role="button">My Account</a>
+        <a class="btn btn-primary btn-lg" href="{% url 'games:anagram-hunt' %}" role="button">Anagram Hunt</a>
+        <a class="btn btn-primary btn-lg" href="{% url 'games:math-facts' %}" role="button">Math Facts Practice</a>
+    </div>
+</div>
+{% endblock %}
