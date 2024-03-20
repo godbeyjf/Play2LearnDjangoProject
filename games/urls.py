@@ -1,6 +1,6 @@
 from django.urls import path
 
-from games.views import MathFactsView, AnagramHuntView, save_score
+from .views import MathFactsView, AnagramHuntView, save_score
 
 app_name = 'games'
 urlpatterns = [

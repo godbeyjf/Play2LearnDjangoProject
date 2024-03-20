@@ -87,12 +87,12 @@ export default {
       correctGuesses: [],
       userInput: "",
       interval: null,
-    }
+    };
   },
   computed: {
     guessesLeft() {
       return this.anagramList.length - this.correctGuesses.length - 1;
-    }
+    },
   },
   methods: {
     play() {
@@ -131,8 +131,9 @@ export default {
       // to record the score on the backend
       try {
         const response = await this.axios.post('/save_score/', {
-          game: 'Anagram Hunt',
-          score: this.score,
+          game_type: 'AnagramGame',
+          game_settings: JSON.stringify({ wordLength: this.wordLength }),
+          final_score: this.score,
           user: this.userName
         });
         console.log(response);
@@ -155,5 +156,5 @@ export default {
       }
     }
   }
-}
+};
 </script>

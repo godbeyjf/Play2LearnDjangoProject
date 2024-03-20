@@ -164,8 +164,9 @@ export default {
       // to record the score on the backend
       try {
         const response = await this.axios.post('/save_score/', {
-          game: 'Math Facts',
-          score: this.score,
+          game_type: 'MathGame',
+          game_settings: JSON.stringify({ operation: this.operation, maxNumber: this.maxNumber}),
+          final_score: this.score,
           user: this.userName
         });
         console.log(response.data);
