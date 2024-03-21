@@ -10,8 +10,65 @@
       <form method="post" class="m-auto">
         {% csrf_token %}
         {{ form|crispy }}
+        
         <button class="form-control btn btn-primary">UPDATE</button>
       </form>
+
+      <h2>Tracking History</h2>
+      <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Time Finished</th>
+                <th>Game Settings</th>
+                <th>Final Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in tracking_history %}
+                <tr>
+                    <td>{{ record.time_finished }}</td>
+                    <td>{{ record.game_settings }}</td>
+                    <td>{{ record.final_score }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+<h2>Leaderboard: Anagram Hunt</h2>
+<table class="table table-striped">
+  <thead>
+      <tr>
+          <th>User</th>
+          <th>Final Score</th>
+      </tr>
+  </thead>
+  <tbody>
+      {% for record in leaderboard_AnagramGame %}
+          <tr>
+              <td>{{ record.user.username }}</td>
+              <td>{{ record.final_score }}</td>
+          </tr>
+      {% endfor %}
+  </tbody>
+</table>
+
+<h2>Leaderboard: Math Facts Practice</h2>
+<table class="table table-striped">
+  <thead>
+      <tr>
+          <th>User</th>
+          <th>Final Score</th>
+      </tr>
+  </thead>
+  <tbody>
+      {% for record in leaderboard_MathGame %}
+          <tr>
+              <td>{{ record.user.username }}</td>
+              <td>{{ record.final_score }}</td>
+          </tr>
+      {% endfor %}
+  </tbody>
+</table>
     </div>
   </div>
 {% endblock %}
